@@ -3,7 +3,7 @@
   https://www.python.org/downloads/release/python-352/
   
 # 下载
-  直接下载zip或git clone https://github.com/ChandlerTJW/movie-spider-top250.git
+  直接下载zip或git clone https://github.com/ChandlerTJW/forum.git
   
 # 使用方法
   python app.py server
