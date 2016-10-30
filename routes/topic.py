@@ -14,6 +14,11 @@ def index():
     return render_template('topic_index.html', node_list=ms)
 
 
+@main.route('/new')
+def new():
+    return render_template('topic_new.html')
+
+
 @main.route('/<int:id>')
 def show(id):
     m = Model.query.get(id)
@@ -32,7 +37,7 @@ def add():
     m = Model(form)
     m.node_id = int(form.get('node_id'))
     m.save()
-    return redirect(url_for('.index'))
+    return redirect(url_for('node.show', id=m.node_id))
 
 
 @main.route('/update/<int:id>', methods=['POST'])

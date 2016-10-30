@@ -29,3 +29,17 @@ class ModelMixin(object):
         db.session.commit()
         # self.deleted = True
         # self.save()
+
+"""
+脚本的例子
+
+apt-get install python3 python3-dev ....
+pip3 install flask flask-script flask-migrate ....
+
+import os
+
+os.system('pip3 install flask')
+
+
+
+"""

@@ -28,6 +28,11 @@ def index():
     return render_template('node_index.html', node_list=ms)
 
 
+@main.route('/new')
+def new():
+    return render_template('node_new.html')
+
+
 @main.route('/<int:id>')
 def show(id):
     m = Model.query.get(id)
@@ -35,14 +40,12 @@ def show(id):
 
 
 @main.route('/edit/<id>')
-@admin_required
 def edit(id):
     m = Model.query.get(id)
     return render_template('node_edit.html', node=m)
 
 
 @main.route('/add', methods=['POST'])
-@admin_required
 def add():
     form = request.form
     m = Model(form)

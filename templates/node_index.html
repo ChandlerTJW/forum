@@ -1,24 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>nodes</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}
+    nodes
+{% endblock %}
+
+{% block content %}
     <div>
         <form action="{{ url_for('.add') }}" method="post">
             <input type="text" name="name" placeholder="输入 name">
+            <br>
+            <input type="text" name="description" placeholder="输入 description">
+            <br>
             <button>Add</button>
         </form>
     </div>
 
-{% for n in node_list %}
+    {% for node in node_list %}
     <div>
-        <a href="{{ url_for('.edit', id=n.id) }}">修改</a>
-        <a href="{{ url_for('.delete', id=n.id) }}">删除</a>
-        <a href="{{ url_for('.show', id=n.id) }}">{{ n.name }}</a>
+        {{ node.id }} : {{ node.name }}
     </div>
-{% endfor %}
+    {% endfor %}
+{% endblock %}
 
-</body>
-</html>
+
+{% block sidebar %}
+    <h1>hello </h1>
+    <a href="/node/new">发布新帖子</a>
+{% endblock %}
+

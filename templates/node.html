@@ -1,30 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>nodes</title>
-</head>
-<body>
-    <div>
-        <form action="{{ url_for('topic.add') }}" method="post">
-            <input type="hidden" name="node_id" value="{{ node.id }}">
-            <div class="">
-            <input type="text" name="title" placeholder="输入 title">
-            </div>
-            <div class="">
-            <textarea name="content" placeholder="输入内容"></textarea>
-            </div>
-            <button>Post topic</button>
-        </form>
-    </div>
+{% extends "base.html" %}
 
-{% for t in node.topics %}
+{% block title %}
+    发帖
+{% endblock %}
+
+{% block content %}
+    {% for t in node.topics %}
     <div>
         <a href="{{ url_for('topic.show', id=t.id) }}">
             {{ t.title }}
         </a>
     </div>
-{% endfor %}
+    {% endfor %}
+{% endblock %}
 
-</body>
-</html>
+
+

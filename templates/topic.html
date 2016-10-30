@@ -1,18 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ topic.title }}</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}
+    {{ topic.title }}
+{% endblock %}
+
+{% block content %}
     <div class="">
         <a href="{{url_for('node.show', id=topic.node.id)}}">{{ topic.node.name }}</a>
     </div>
     <div>
         <h1>{{ topic.title }}</h1>
-        <p>{{ topic.content }}</p>
+        <p>
+            {{ topic.content}}
+        </p>
     </div>
 
+    <div class="bbs-comments">
+        {% for c in topic.comments %}
+        <div>
+            {{ c.content }}
+        </div>
+        {% endfor %}
+    </div>
 
-</body>
-</html>
+    <div>
+        <form action="{{ url_for('comment.add') }}" method="post">
+            <input type="hidden" name="topic_id" value="{{ topic.id }}">
+            <textarea name="content"></textarea>
+            <button>发表回复</button>
+        </form>
+    </div>
+{% endblock %}

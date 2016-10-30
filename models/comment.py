@@ -5,14 +5,12 @@ from . import ModelMixin
 from . import db
 
 
-class Topic(db.Model, ModelMixin):
-    __tablename__ = 'topics'
+class Comment(db.Model, ModelMixin):
+    __tablename__ = 'comments'
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String())
     content = db.Column(db.String())
-    description = db.Column(db.String())
-    node_id = db.Column(db.Integer, db.ForeignKey('nodes.id'))
-    comments = db.relationship('Comment', backref='node')
+    topic_id = db.Column(db.Integer, db.ForeignKey('topics.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def __init__(self, form):
         self.title = form.get('title', '')
